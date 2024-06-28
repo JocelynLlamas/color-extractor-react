@@ -23,9 +23,9 @@ const ImageUpload = ({ setColors }) => {
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     return (
-        <div {...getRootProps()} style={dropzoneStyle}>
+        <div {...getRootProps()} className="border-2 border-dashed border-gray-400 rounded-lg p-10 text-center cursor-pointer">
             <input {...getInputProps()} />
-            <p>Drag 'n' drop an image here, or click to select one</p>
+            <p className="text-gray-500">Drag 'n' drop an image here, or click to select one</p>
         </div>
     );
 };
