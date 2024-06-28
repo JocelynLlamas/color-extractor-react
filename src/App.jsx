@@ -5,11 +5,12 @@ import backgroundImg from './assets/images/Bitmap.png'
 
 const App = () => {
   const [colors, setColors] = useState([]);
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center">
       <img src={backgroundImg} alt="" className="relative" />
-      
+
       <div className="absolute w-full">
 
         <header className="w-full bg-white shadow p-4 flex justify-between items-center">
@@ -24,7 +25,12 @@ const App = () => {
           <p className="text-lg text-gray-600 mb-8">
             This tool allows you to upload an image and extract the dominant colors from it. Simply drag and drop an image or click to select one.
           </p>
-          <ImageUpload setColors={setColors} />
+          <ImageUpload setColors={setColors} setUploadedImage={setUploadedImage} />
+          {uploadedImage && (
+            <div className="mt-8 max-w-96">
+              <img src={uploadedImage} alt="Uploaded" className="max-w-full h-auto" />
+            </div>
+          )}
         </main>
 
         {colors.length > 0 && (
