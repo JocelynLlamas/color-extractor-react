@@ -2,7 +2,8 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import Palette, { getPalette } from "react-palette";
 
-const ImageUpload = ({ setColors }) => {
+// PROPS
+const ImageUpload = ({ setColors, setUploadedImage }) => {
     const onDrop = useCallback(acceptedFiles => {
         const file = acceptedFiles[0];
         const reader = new FileReader();
@@ -13,12 +14,14 @@ const ImageUpload = ({ setColors }) => {
 
             img.onload = () => {
                 getPalette(img).then(palette => {
+                    console.log(palette)
                     setColors(Object.values(palette));
                 });
             };
+            setUploadedImage(reader.result);
         };
         reader.readAsDataURL(file);
-    }, [setColors]);
+    }, [setColors, setUploadedImage]);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
@@ -28,14 +31,6 @@ const ImageUpload = ({ setColors }) => {
             <p className="text-gray-500">Drag 'n' drop an image here, or click to select one</p>
         </div>
     );
-};
-
-const dropzoneStyle = {
-    border: '2px dashed #cccccc',
-    borderRadius: '5px',
-    padding: '20px',
-    textAling: 'center',
-    cursor: 'pointer'
 };
 
 export default ImageUpload;
