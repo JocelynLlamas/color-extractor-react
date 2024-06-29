@@ -19,7 +19,7 @@ Color Extractor is a React application that allows users to upload an image and 
 
 ## 📸 Screenshots
 
-![App Screenshot](https://github.com/JocelynLlamas/color-extractor-react/tree/ImageComponent/src/assets/images/Screenshot.png)
+![App Screenshot](https://github.com/JocelynLlamas/color-extractor-react/blob/main/src/assets/images/Screenshot.png)
 
 ## 📝 Prerequisites
 
