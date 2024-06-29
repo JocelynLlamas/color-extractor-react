@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import ImageUpload from './components/ImageUpload';
 import backgroundImg from './assets/images/Bitmap.png'
-// import './App.css';
 
 const App = () => {
   const [colors, setColors] = useState([]);
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleColorClick = (color) => {
+    navigator.clipboard.writeText(color).then(() => {
+      setAlertMessage(`Copied ${color} to clipboard`);
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    }).catch((err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center">
@@ -40,13 +53,23 @@ const App = () => {
               {colors.map((color, index) => (
                 <li
                   key={index}
-                  className="w-24 h-24 m-2 flex items-center justify-center text-white font-bold rounded-lg"
-                  style={{ backgroundColor: color }}>
+                  className="w-24 h-24 m-2 flex items-center justify-center text-white font-bold rounded-lg cursor-pointer relative"
+                  style={{ backgroundColor: color }}
+                  onClick={() => handleColorClick(color)}>
                   {color}
+                  <span className="absolute rounded-lg inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-sm font-semibold opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    Copy
+                  </span>
                 </li>
               ))}
             </ul>
           </section>
+        )}
+
+        {showAlert && (
+          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+            {alertMessage}
+          </div>
         )}
 
         <footer className="py-8">
