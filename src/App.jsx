@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import ImageUpload from './components/ImageUpload';
-import backgroundImg from './assets/images/Bitmap.png'
+import backgroundImg from './assets/images/Bitmap.png';
+import logo from './assets/images/logo.png';
+import githubIcon from './assets/images/Github.svg';
+import websiteIcon from './assets/images/Portfolio.svg';
 
 // Transform color codes
 const rgbToHex = (rgb) => {
@@ -52,7 +55,7 @@ const App = () => {
 
         <header className="w-full bg-white shadow p-4 flex justify-between items-center">
           <div className="flex items-center">
-            <img src="https://via.placeholder.com/40" alt="Logo" className="h-10 mr-2" />
+            <img src={logo} alt="Logo" className="h-10 mr-2 rounded-lg" />
             <span className="text-xl font-bold text-gray-800">Color Extractor</span>
           </div>
         </header>
@@ -115,11 +118,28 @@ const App = () => {
             {alertMessage}
           </div>
         )}
-
-        <footer className="py-8">
-          <p className="text-gray-600">Jocelyn Llamas</p>
-        </footer>
       </div>
+      <footer className="w-full bg-gray-900 text-white py-8 mt-28">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-between">
+            <div className="w-full md:w-1/4 mb-6 md:mb-0">
+              <img src={logo} alt="Logo" className="h-28 mb-4 rounded-lg" />
+              <p className="text-gray-400">Building Tomorrow, One Line at a Time.</p>
+              <div className="flex space-x-4 mt-4">
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <img src={githubIcon} alt="GitHub" className="h-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <img src={websiteIcon} alt="Website" className="h-6" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center text-gray-400">
+            © 2024 Jocelyn Llamas. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
