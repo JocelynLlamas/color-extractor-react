@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import Palette, { getPalette } from "react-palette";
 
 // PROPS
-const ImageUpload = ({ setColors, setUploadedImage }) => {
+const ImageUpload = ({ setColors, setNamesColors, setUploadedImage }) => {
     const onDrop = useCallback(acceptedFiles => {
         const file = acceptedFiles[0];
         const reader = new FileReader();
@@ -14,14 +14,14 @@ const ImageUpload = ({ setColors, setUploadedImage }) => {
 
             img.onload = () => {
                 getPalette(img).then(palette => {
-                    console.log(palette)
+                    setNamesColors(Object.keys(palette));
                     setColors(Object.values(palette));
                 });
             };
             setUploadedImage(reader.result);
         };
         reader.readAsDataURL(file);
-    }, [setColors, setUploadedImage]);
+    }, [setColors, setNamesColors, setUploadedImage]);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
