@@ -16,7 +16,7 @@ const hexToRgb = (hex) => {
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
   const b = bigint & 255;
-  return `${r}, ${g}, ${b}`;
+  return `(${r}, ${g}, ${b})`;
 };
 
 const App = () => {
@@ -43,16 +43,15 @@ const App = () => {
   };
 
   const convertToHex = () => {
-    setColors(colors.map(color => color.startsWith('rgb') ? rgbToHex(color) : color));
+    setColors(colors.map(color => color.startsWith('(') ? rgbToHex(color) : color));
   };
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center">
-      <img src={backgroundImg} alt="" className="relative" />
+    <div className="relative min-h-screen flex flex-col">
+      <img src={backgroundImg} alt="" className="absolute w-full h-auto z-0" />
 
-      <div className="absolute w-full">
-
+      <div className="flex flex-col flex-grow w-full">
         <header className="w-full bg-white shadow p-4 flex justify-between items-center">
           <div className="flex items-center">
             <img src={logo} alt="Logo" className="h-10 mr-2 rounded-lg" />
@@ -60,27 +59,27 @@ const App = () => {
           </div>
         </header>
 
-        <main className="flex-grow flex flex-col items-center justify-center p-5 text-center m-5">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">Upload an image to extract colors.</h1>
-          <p className="text-lg text-gray-600 mb-8">
+        <main className="flex-grow flex flex-col items-center justify-center p-5 text-center  mt-5">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Upload an image to extract colors.</h1>
+          <p className="text-md md:text-lg text-gray-600 mb-8">
             This tool allows you to upload an image and extract the dominant colors from it. Simply drag and drop an image or click to select one.
           </p>
           <ImageUpload setColors={setColors} setUploadedImage={setUploadedImage} setNamesColors={setNamesColors} />
           {uploadedImage && (
-            <div className="mt-8 max-w-96">
+            <div className="mt-8 max-w-xs md:max-w-3xl">
               <img src={uploadedImage} alt="Uploaded" className="max-w-full h-auto" />
             </div>
           )}
 
           {colors.length > 0 && (
-            <div className="mt-4 flex space-x-4">
+            <div className="mt-4 flex flex-wrap justify-center space-x-4">
               <button
-                className="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700"
+                className="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 mb-2"
                 onClick={convertToRgb}>
                 Convert to RGB
               </button>
               <button
-                className="bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700"
+                className="bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 mb-2"
                 onClick={convertToHex}>
                 Convert to HEX
               </button>
@@ -105,11 +104,11 @@ const App = () => {
                 </li>
               ))}
             </ul>
-            <div class="flex space-x-11 ...">
+            {/* <div className="flex flex-wrap space-x-11 justify-center mt-4">
               {namesColors.map((name, index) => (
                 <p key={index} className="text-center">{name}</p>
               ))}
-            </div>
+            </div> */}
           </section>
         )}
 
@@ -118,8 +117,7 @@ const App = () => {
             {alertMessage}
           </div>
         )}
-      </div>
-      <footer className="w-full bg-gray-900 text-white py-8 mt-28">
+      <footer className="static w-full bg-gray-900 text-white py-8 mt-auto">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-between">
             <div className="w-full md:w-1/4 mb-6 md:mb-0">
@@ -140,6 +138,7 @@ const App = () => {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
