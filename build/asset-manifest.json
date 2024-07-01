@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/color-extractor-react/build/static/css/main.49eaf7d4.css",
-    "main.js": "/color-extractor-react/build/static/js/main.6884860b.js",
+    "main.css": "/color-extractor-react/build/static/css/main.b037bd6e.css",
+    "main.js": "/color-extractor-react/build/static/js/main.edd9165e.js",
     "static/media/logo.png": "/color-extractor-react/build/static/media/logo.b305f67a2119e449a5fd.png",
     "static/media/Bitmap.png": "/color-extractor-react/build/static/media/Bitmap.28bdfa7a0fdb960480ee.png",
     "static/media/Github.svg": "/color-extractor-react/build/static/media/Github.0693964425420a31d145de572a5c9eac.svg",
     "index.html": "/color-extractor-react/build/index.html",
     "static/media/Portfolio.svg": "/color-extractor-react/build/static/media/Portfolio.15ac265e179b01fb5cd064217e818cfa.svg",
-    "main.49eaf7d4.css.map": "/color-extractor-react/build/static/css/main.49eaf7d4.css.map",
-    "main.6884860b.js.map": "/color-extractor-react/build/static/js/main.6884860b.js.map"
+    "main.b037bd6e.css.map": "/color-extractor-react/build/static/css/main.b037bd6e.css.map",
+    "main.edd9165e.js.map": "/color-extractor-react/build/static/js/main.edd9165e.js.map"
   },
   "entrypoints": [
-    "static/css/main.49eaf7d4.css",
-    "static/js/main.6884860b.js"
+    "static/css/main.b037bd6e.css",
+    "static/js/main.edd9165e.js"
   ]
 }
